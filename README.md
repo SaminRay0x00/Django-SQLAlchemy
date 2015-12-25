@@ -1,6 +1,6 @@
 # Django-SQLAlchemy (Design Pattern)
 
-Connect to database without DjangoORM just use with SQLAlchemy ORM
+Connect to database without Django ORM just use with SQLAlchemy ORM
 
 #Features:
 
