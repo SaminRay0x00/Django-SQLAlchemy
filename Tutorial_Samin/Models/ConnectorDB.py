@@ -1,12 +1,10 @@
 import sqlalchemy
 from sqlalchemy import create_engine
-#from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 
 
 
-def ConnectEngine():
+def ConnectMySQL():
 
         engine = create_engine('mysql://root:@localhost/tutorial-ramin', echo=True)
         return engine
