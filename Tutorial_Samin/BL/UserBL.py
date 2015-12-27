@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
 
 
+
 def CreateTable():
 
                 Base.metadata.create_all(ConnectEngine())
