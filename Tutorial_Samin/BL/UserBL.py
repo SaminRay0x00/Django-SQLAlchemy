@@ -1,6 +1,6 @@
 from Models.UserModel import Base
 from Models.UserModel import Student
-from Models.ConnectorDB import ConnectEngine
+from Models.ConnectorDB import ConnectMySQL
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
 
@@ -8,11 +8,11 @@ from sqlalchemy.sql import text
 
 def CreateTable():
 
-                Base.metadata.create_all(ConnectEngine())
+                Base.metadata.create_all(ConnectMySQL())
 
 def InsertDB(pmodel):
 
-                Session = sessionmaker(bind=ConnectEngine())
+                Session = sessionmaker(bind=ConnectMySQL())
                 sessiondb = Session()
                 ed_user   =  pmodel
                 sessiondb.add(ed_user)
@@ -22,7 +22,7 @@ def InsertDB(pmodel):
 
 def Delete(pModel=Student(),pID=5):
 
-               Session = sessionmaker(bind=ConnectEngine())
+               Session = sessionmaker(bind=ConnectMySQL())
                sessiondb = Session()
                q = text("DELETE FROM :model12 WHERE id=:pidd")
                our_user = sessiondb.execute(q,{'model12':pModel.__tablename__,'pidd':pID})
@@ -32,14 +32,14 @@ def Delete(pModel=Student(),pID=5):
 
 def SelectAll(student):
 
-                        Session = sessionmaker(bind=ConnectEngine())
+                        Session = sessionmaker(bind=ConnectMySQL())
                         sessiondb = Session()
                         lst =  sessiondb.query(student).all()
                         return lst
 
 def Edit(pModel):
 
-                 Session = sessionmaker(bind=ConnectEngine())
+                 Session = sessionmaker(bind=ConnectMySQL())
                  sessiondb = Session()
                  ed_user   =  pModel
                  sessiondb.merge(ed_user)
@@ -49,7 +49,7 @@ def Edit(pModel):
 
 def Transaction():
 
-    Session = sessionmaker(bind=ConnectEngine(),autocommit=True)
+    Session = sessionmaker(bind=ConnectMySQL(),autocommit=True)
     sessiondb = Session()
     trans = sessiondb.begin()
     try:
