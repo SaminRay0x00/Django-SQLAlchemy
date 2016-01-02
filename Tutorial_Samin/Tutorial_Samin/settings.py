@@ -106,12 +106,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-
-
-
-ff = os.path.join(BASE_DIR, 'static')
-print ff
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
