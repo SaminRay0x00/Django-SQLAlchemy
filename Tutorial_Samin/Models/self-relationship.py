@@ -15,7 +15,7 @@ class Student(Base):
         fullname = Column(String(50))
         password = Column(String(50))
         parent_id = Column(Integer, ForeignKey('reltest.id'))
-        children = relationship("Student",lazy="joined",join_depth=2)
+        children = relationship(lambda: Student, remote_side=[id])
 
 from Models.ConnectorDB import ConnectEngine
 Base.metadata.create_all(ConnectEngine().engine)
