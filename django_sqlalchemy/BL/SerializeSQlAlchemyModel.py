@@ -6,7 +6,7 @@ class serialize_sqlalchemy(object):
 
 	def serialize(self,model):
 
-			self.columns = [c.key for c in class_mapper(model.__class__).columns]
+	    self.columns = [c.key for c in class_mapper(model.__class__).columns]
     	    return dict((c, getattr(model, c)) for c in self.columns)
 
 
